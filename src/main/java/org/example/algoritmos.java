@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public class algoritmos {
 
+    /**
+     * Método de ordenamiento de búrbuja
+     * @param arr Arreglo que se va a ordenar
+     */
     public static void bubbleSort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -18,6 +22,13 @@ public class algoritmos {
         }
     }
 
+
+    /**
+     * Método de ordenamiento QuickSort
+     * @param arr Arreglo que se va a ordenar
+     * @param low
+     * @param high
+     */
     public static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
             int pi = partition(arr, low, high);
@@ -26,6 +37,14 @@ public class algoritmos {
         }
     }
 
+
+    /**
+     * Método de ordenamiento de partición
+     * @param arr
+     * @param low
+     * @param high
+     * @return
+     */
     private static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = (low - 1);
@@ -43,6 +62,13 @@ public class algoritmos {
         return i + 1;
     }
 
+
+    /**
+     * Método de ordenamiento stooge
+     * @param arr
+     * @param l
+     * @param h
+     */
     public static void stoogeSort(int[] arr, int l, int h) {
         if (l >= h)
             return;
@@ -61,6 +87,11 @@ public class algoritmos {
         }
     }
 
+
+    /**
+     * Método de ordenamiento pigeon hole
+     * @param arr
+     */
     public static void pigeonholeSort(int[] arr) {
         int min = Arrays.stream(arr).min().getAsInt();
         int max = Arrays.stream(arr).max().getAsInt();
@@ -79,6 +110,13 @@ public class algoritmos {
         }
     }
 
+
+    /**
+     * Método de ordenamiento de merge
+     * @param arr
+     * @param l
+     * @param r
+     */
     public static void mergeSort(int[] arr, int l, int r) {
         if (l < r) {
             int m = (l + r) / 2;
@@ -88,6 +126,13 @@ public class algoritmos {
         }
     }
 
+    /**
+     * Método auxiliar de ordenamiento por merge
+     * @param arr
+     * @param l
+     * @param m
+     * @param r
+     */
     private static void merge(int[] arr, int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -123,6 +168,14 @@ public class algoritmos {
         }
     }
 
+
+    /**
+     * Método de ordenamiento de bitonic
+     * @param arr
+     * @param low
+     * @param cnt
+     * @param dir
+     */
     public static void bitonicSort(int[] arr, int low, int cnt, boolean dir) {
         if (cnt > 1) {
             int k = cnt / 2;
@@ -132,6 +185,14 @@ public class algoritmos {
         }
     }
 
+
+    /**
+     * Método uxiliar para el ordenamiento por bitonic
+     * @param arr
+     * @param low
+     * @param cnt
+     * @param dir
+     */
     private static void bitonicMerge(int[] arr, int low, int cnt, boolean dir) {
         if (cnt > 1) {
             int k = cnt / 2;
