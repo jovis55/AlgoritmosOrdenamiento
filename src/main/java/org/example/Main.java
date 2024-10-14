@@ -35,6 +35,14 @@ public class Main {
         probarLinearSearchCon10000();
         probarLinearSearchCon100000();
         probarLinearSearchCon1000000();
+
+        probarBinarySearchCon10000();
+        probarBinarySearchCon100000();
+        probarBinarySearchCon1000000();
+
+        probarJumpSearchCon10000();
+        probarJumpSearchCon100000();
+        probarJumpSearchCon1000000();
     }
 
     static void probarBubbleSortCon10000() {
@@ -278,7 +286,7 @@ public class Main {
         int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios10000.txt");
 
         // Ejecutar el metodo linearSearch
-        int encontrado = AlgoritmosOrdenamiento.linearSearch(arreglo, 1);
+        int encontrado = AlgoritmosBusqueda.linearSearch(arreglo, 1);
 
         long fin = System.currentTimeMillis();      // Registrar el fin
         System.out.println("LinearSearch con 10,000 elementos tomó " + (fin - inicio) + " ms");
@@ -291,7 +299,7 @@ public class Main {
         int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios100000.txt");
 
         // Ejecutar el metodo linearSearch
-        int encontrado = AlgoritmosOrdenamiento.linearSearch(arreglo, 1);
+        int encontrado = AlgoritmosBusqueda.linearSearch(arreglo, 1);
 
         long fin = System.currentTimeMillis();      // Registrar el fin
         System.out.println("LinearSearch con 100,000 elementos tomó " + (fin - inicio) + " ms");
@@ -304,9 +312,88 @@ public class Main {
         int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios1000000.txt");
 
         // Ejecutar el metodo linearSearch
-        int encontrado = AlgoritmosOrdenamiento.linearSearch(arreglo, 1);
+        int encontrado = AlgoritmosBusqueda.linearSearch(arreglo, 1);
 
         long fin = System.currentTimeMillis();      // Registrar el fin
         System.out.println("LinearSearch con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
     }
+
+    static void probarBinarySearchCon10000() {
+        long inicio =System.currentTimeMillis();    // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios10000.txt");
+
+        // Ejecutar el metodo linearSearch
+        int encontrado = AlgoritmosBusqueda.binarySearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();      // Registrar el fin
+        System.out.println("BinarySearch con 10,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarBinarySearchCon100000() {
+        long inicio =System.currentTimeMillis();    // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios100000.txt");
+
+        // Ejecutar el metodo linearSearch
+        int encontrado = AlgoritmosBusqueda.binarySearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();      // Registrar el fin
+        System.out.println("BinarySearch con 100,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarBinarySearchCon1000000() {
+        long inicio =System.currentTimeMillis();    // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios1000000.txt");
+
+        // Ejecutar el metodo linearSearch
+        int encontrado = AlgoritmosBusqueda.binarySearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();      // Registrar el fin
+        System.out.println("BinarySearch con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarJumpSearchCon10000() {
+        long inicio =System.currentTimeMillis();    // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios10000.txt");
+
+        // Ejecutar el metodo linearSearch
+        int encontrado = AlgoritmosBusqueda.jumpSearch(arreglo, 99999999);
+
+        long fin = System.currentTimeMillis();      // Registrar el fin
+        System.out.println("JumpSearch con 10,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarJumpSearchCon100000() {
+        long inicio =System.currentTimeMillis();    // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios100000.txt");
+
+        // Ejecutar el metodo linearSearch
+        int encontrado = AlgoritmosBusqueda.jumpSearch(arreglo, 99999999);
+
+        long fin = System.currentTimeMillis();      // Registrar el fin
+        System.out.println("JumpSearch con 100,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarJumpSearchCon1000000() {
+        long inicio =System.currentTimeMillis();    // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios1000000.txt");
+
+        // Ejecutar el metodo linearSearch
+        int encontrado = AlgoritmosBusqueda.jumpSearch(arreglo, 99999999);
+
+        long fin = System.currentTimeMillis();      // Registrar el fin
+        System.out.println("JumpSearch con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
 }
