@@ -8,29 +8,33 @@ public class Main {
         ManejoDelTXT.rellenartxt(100000, "numerosAleatorios100000.txt");
         ManejoDelTXT.rellenartxt(1000000, "numerosAleatorios1000000.txt");
         
-        probarBubbleSortCon10000();
-        probarBubbleSortCon100000();
-        probarBubbleSortCon1000000();
+//        probarBubbleSortCon10000();
+//        probarBubbleSortCon100000();
+//        probarBubbleSortCon1000000();
+//
+//        probarQuickSortCon10000();
+//        probarMergeSortCon100000();
+//        probarQuickSortCon1000000();
+//
+//        probarStoogeSortCon10000();
+//        probarStoogeSortCon100000();
+//        probarQuickSortCon1000000();
+//
+//        probarPigeonholeSortCon10000();
+//        probarPigeonholeSortCon100000();
+//        probarPigeonholeSortCon1000000();
+//
+//        probarMergeSortCon10000();
+//        probarMergeSortCon100000();
+//        probarMergeSortCon1000000();
+//
+//        probarBitonicSortCon10000();
+//        probarBitonicSortCon100000();
+//        probarBitonicSortCon1000000();
 
-        probarQuickSortCon10000();
-        probarMergeSortCon100000();
-        probarQuickSortCon1000000();
-
-        probarStoogeSortCon10000();
-        probarStoogeSortCon100000();
-        probarQuickSortCon1000000();
-
-        probarPigeonholeSortCon10000();
-        probarPigeonholeSortCon100000();
-        probarPigeonholeSortCon1000000();
-
-        probarMergeSortCon10000();
-        probarMergeSortCon100000();
-        probarMergeSortCon1000000();
-
-        probarBitonicSortCon10000();
-        probarBitonicSortCon100000();
-        probarBitonicSortCon1000000();
+        probarLinearSearchCon10000();
+        probarLinearSearchCon100000();
+        probarLinearSearchCon1000000();
     }
 
     static void probarBubbleSortCon10000() {
@@ -265,5 +269,44 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("BitonicSort con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarLinearSearchCon10000() {
+        long inicio =System.currentTimeMillis();    // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios10000.txt");
+
+        // Ejecutar el metodo linearSearch
+        int encontrado = AlgoritmosOrdenamiento.linearSearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();      // Registrar el fin
+        System.out.println("LinearSearch con 10,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarLinearSearchCon100000() {
+        long inicio =System.currentTimeMillis();    // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios100000.txt");
+
+        // Ejecutar el metodo linearSearch
+        int encontrado = AlgoritmosOrdenamiento.linearSearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();      // Registrar el fin
+        System.out.println("LinearSearch con 100,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarLinearSearchCon1000000() {
+        long inicio =System.currentTimeMillis();    // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios1000000.txt");
+
+        // Ejecutar el metodo linearSearch
+        int encontrado = AlgoritmosOrdenamiento.linearSearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();      // Registrar el fin
+        System.out.println("LinearSearch con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
     }
 }

@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+numerosAleatorios10000.txt
+numerosAleatorios100000.txt
+numerosAleatorios1000000.txt
