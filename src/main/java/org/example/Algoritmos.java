@@ -12,8 +12,6 @@ public class Algoritmos {
      */
     public static void bubbleSort(int[] arr) {
 
-        long inicio = System.currentTimeMillis();
-
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
@@ -26,8 +24,6 @@ public class Algoritmos {
             }
         }
 
-        long fin = System.currentTimeMillis();
-        System.out.println("BubbleSort tomó " + (fin - inicio) + " ms");
     }
 
     /**
@@ -122,8 +118,6 @@ public class Algoritmos {
      */
     public static void pigeonholeSort(int[] arr) {
 
-        long inicio = System.currentTimeMillis();
-
         int min = Arrays.stream(arr).min().getAsInt(); // Encontrar el valor mínimo
         int max = Arrays.stream(arr).max().getAsInt(); // Encontrar el valor máximo
         int range = max - min + 1; // Rango de valores
@@ -139,9 +133,6 @@ public class Algoritmos {
                 arr[index++] = i + min; // Reinsertar los valores en el arreglo
             }
         }
-
-        long fin = System.currentTimeMillis();
-        System.out.println("PigeonholeSort tomó " + (fin - inicio) + " ms");
     }
 
     /**

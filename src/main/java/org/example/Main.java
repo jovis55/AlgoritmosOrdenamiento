@@ -1,39 +1,122 @@
 package org.example;
 
-public class Main {
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.ui.ApplicationFrame;
+import org.jfree.data.category.DefaultCategoryDataset;
+import javax.swing.*;
+import java.util.*;
+
+public class Main extends ApplicationFrame {
+
+    private static Map<String, Long> tiemposEjecucion = new HashMap<>();
+
+    public Main(String title) {
+        super(title);
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Comparacion de Algoritmos de Ordenamiento",
+                "Algoritmo",
+                "Tiempo de Ejecucion (ms)",
+                crearDataset(),
+                PlotOrientation.VERTICAL,
+                true, true, false);
+
+        ChartPanel chartPanel = new ChartPanel(barChart);
+        chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
+        setContentPane(chartPanel);
+    }
 
     public static void main(String[] args) {
 
         ManejoDelTXT.rellenartxt(10000, "numerosAleatorios10000.txt");
         ManejoDelTXT.rellenartxt(100000, "numerosAleatorios100000.txt");
         ManejoDelTXT.rellenartxt(1000000, "numerosAleatorios1000000.txt");
-        
-        probarBubbleSortCon10000();
-        probarBubbleSortCon100000();
-        probarBubbleSortCon1000000();
 
-        probarQuickSortCon10000();
-        probarMergeSortCon100000();
-        probarQuickSortCon1000000();
+        // Ejecutar los algoritmos
+        probarAlgoritmos();
 
-        probarStoogeSortCon10000();
-        probarStoogeSortCon100000();
-        probarQuickSortCon1000000();
-
-        probarPigeonholeSortCon10000();
-        probarPigeonholeSortCon100000();
-        probarPigeonholeSortCon1000000();
-
-        probarMergeSortCon10000();
-        probarMergeSortCon100000();
-        probarMergeSortCon1000000();
-
-        probarBitonicSortCon10000();
-        probarBitonicSortCon100000();
-        probarBitonicSortCon1000000();
+        // Mostrar gráfico en la ventana
+        SwingUtilities.invokeLater(() -> {
+            Main chart = new Main("Comparacion de Algoritmos");
+            chart.setSize(800, 600);
+            chart.setLocationRelativeTo(null);
+            chart.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            chart.setVisible(true);
+        });
     }
 
-    static void probarBubbleSortCon10000() {
+    private static DefaultCategoryDataset crearDataset() {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        for (Map.Entry<String, Long> entry : tiemposEjecucion.entrySet()) {
+            dataset.addValue(entry.getValue(), entry.getKey(), entry.getKey());
+        }
+
+        return dataset;
+    }
+
+    private static void probarAlgoritmos() {
+        // Pruebas con 10,000 elementos
+        long tiempoBubbleSort10000 = probarBubbleSortCon10000();
+        tiemposEjecucion.put("BubbleSort 10,000", tiempoBubbleSort10000);
+
+        long tiempoQuickSort10000 = probarQuickSortCon10000();
+        tiemposEjecucion.put("QuickSort 10,000", tiempoQuickSort10000);
+
+        long tiempoMergeSort10000 = probarMergeSortCon10000();
+        tiemposEjecucion.put("MergeSort 10,000", tiempoMergeSort10000);
+
+        long tiempoStoogeSort10000 = probarStoogeSortCon10000();
+        tiemposEjecucion.put("StoogeSort 10,000", tiempoStoogeSort10000);
+
+        long tiempoPigeonholeSort10000 = probarPigeonholeSortCon10000();
+        tiemposEjecucion.put("PigeonholeSort 10,000", tiempoPigeonholeSort10000);
+
+        long tiempoBitonicSort10000 = probarBitonicSortCon10000();
+        tiemposEjecucion.put("BitonicSort 10,000", tiempoBitonicSort10000);
+
+        // Pruebas con 100,000 elementos
+        long tiempoBubbleSort100000 = probarBubbleSortCon100000();
+        tiemposEjecucion.put("BubbleSort 100,000", tiempoBubbleSort100000);
+
+        long tiempoQuickSort100000 = probarQuickSortCon100000();
+        tiemposEjecucion.put("QuickSort 100,000", tiempoQuickSort100000);
+
+        long tiempoMergeSort100000 = probarMergeSortCon100000();
+        tiemposEjecucion.put("MergeSort 100,000", tiempoMergeSort100000);
+
+        //long tiempoStoogeSort100000 = probarStoogeSortCon100000();
+        //tiemposEjecucion.put("StoogeSort 100,000", tiempoStoogeSort100000);
+
+        long tiempoPigeonholeSort100000 = probarPigeonholeSortCon100000();
+        tiemposEjecucion.put("PigeonholeSort 100,000", tiempoPigeonholeSort100000);
+
+        long tiempoBitonicSort100000 = probarBitonicSortCon100000();
+        tiemposEjecucion.put("BitonicSort 100,000", tiempoBitonicSort100000);
+
+        // Pruebas con 1,000,000 elementos
+        long tiempoBubbleSort1000000 = probarBubbleSortCon1000000();
+        tiemposEjecucion.put("BubbleSort 1,000,000", tiempoBubbleSort1000000);
+
+        long tiempoQuickSort1000000 = probarQuickSortCon1000000();
+        tiemposEjecucion.put("QuickSort 1,000,000", tiempoQuickSort1000000);
+
+        long tiempoMergeSort1000000 = probarMergeSortCon1000000();
+        tiemposEjecucion.put("MergeSort 1,000,000", tiempoMergeSort1000000);
+
+        //long tiempoStoogeSort1000000 = probarStoogeSortCon1000000();
+        //tiemposEjecucion.put("StoogeSort 1,000,000", tiempoStoogeSort1000000);
+
+        long tiempoPigeonholeSort1000000 = probarPigeonholeSortCon1000000();
+        tiemposEjecucion.put("PigeonholeSort 1,000,000", tiempoPigeonholeSort1000000);
+
+        long tiempoBitonicSort1000000 = probarBitonicSortCon1000000();
+        tiemposEjecucion.put("BitonicSort 1,000,000", tiempoBitonicSort1000000);
+    }
+
+    static long probarBubbleSortCon10000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -43,10 +126,13 @@ public class Main {
         Algoritmos.bubbleSort(arreglo);
 
         long fin = System.currentTimeMillis();  // Registrar el fin
+
         System.out.println("BubbleSort con 10,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarBubbleSortCon100000() {
+    static long probarBubbleSortCon100000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -57,9 +143,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("BubbleSort con 100,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarBubbleSortCon1000000() {
+    static long probarBubbleSortCon1000000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -70,9 +158,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("BubbleSort con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarQuickSortCon10000() {
+    static long probarQuickSortCon10000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -83,9 +173,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("QuickSort con 10,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarQuickSortCon100000() {
+    static long probarQuickSortCon100000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -96,9 +188,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("QuickSort con 100,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarQuickSortCon1000000() {
+    static long probarQuickSortCon1000000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -109,9 +203,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("QuickSort con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarStoogeSortCon10000() {
+    static long probarStoogeSortCon10000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -122,9 +218,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("StoogeSort con 10,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarStoogeSortCon100000() {
+    static long probarStoogeSortCon100000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -135,9 +233,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("StoogeSort con 100,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarStoogeSortCon1000000() {
+    static long probarStoogeSortCon1000000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -148,9 +248,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("StoogeSort con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarPigeonholeSortCon10000() {
+    static long probarPigeonholeSortCon10000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -161,9 +263,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("PigeonholeSort con 10,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarPigeonholeSortCon100000() {
+    static long probarPigeonholeSortCon100000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -174,9 +278,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("PigeonholeSort con 100,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarPigeonholeSortCon1000000() {
+    static long probarPigeonholeSortCon1000000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -187,9 +293,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("PigeonholeSort con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarMergeSortCon10000() {
+    static long probarMergeSortCon10000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -200,9 +308,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("MergeSort con 10,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarMergeSortCon100000() {
+    static long probarMergeSortCon100000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -213,9 +323,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("MergeSort con 100,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarMergeSortCon1000000() {
+    static long probarMergeSortCon1000000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -226,9 +338,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("MergeSort con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarBitonicSortCon10000() {
+    static long probarBitonicSortCon10000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -239,9 +353,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("BitonicSort con 10,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarBitonicSortCon100000() {
+    static long probarBitonicSortCon100000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -252,9 +368,11 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("BitonicSort con 100,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 
-    static void probarBitonicSortCon1000000() {
+    static long probarBitonicSortCon1000000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
         // Cargar los valores desde el archivo al arreglo
@@ -265,5 +383,7 @@ public class Main {
 
         long fin = System.currentTimeMillis();  // Registrar el fin
         System.out.println("BitonicSort con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
     }
 }
