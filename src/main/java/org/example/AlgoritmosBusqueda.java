@@ -16,12 +16,35 @@ public class AlgoritmosBusqueda {
      * o hasta encontrar la posicion del elemento solicitado
      */
     public static int linearSearch(int[] arreglo, int clave) {
+        int indice = -1; // -1 si el elemento no está en el array
         for (int i = 0; i < arreglo.length; i++) {
             if (arreglo[i] == clave) {
-                return i; // Retorna el índice si el elemento se encuentra
+                indice = i; // Modifica el índice si el elemento se encuentra
             }
         }
-        return -1; // Retorna -1 si el elemento no está en el array
+        return indice; // Retorna el valor de indice ya sea que este o no
+    }
+
+    /**
+     * Metodo de busqueda lineal limitado
+     * @param arreglo Arreglo en el que se va a buscar
+     * @param clave Elemento que se busca en el arreglo
+     * @return Devuelve la posicion del elemento buscado, si no existe sera -1
+     * La busqueda lineal limitada es un tipo de algoritmo que recorre de manera
+     * continua una lista de elementos buscando un elemento especificado, esto lo
+     * hace comparando cada elemento de la lista con el elemento que se esta
+     * buscando, hasta encontrar el elemento solicitado, cuando lo encuentra termina el
+     * ciclo sin haber recorrido toda la lista.
+     */
+    public static int limitedLinearSearch(int[] arreglo, int clave) {
+        int indice = -1; // -1 si el elemento no está en el array
+        for (int i = 0; i < arreglo.length; i++) {
+            if (arreglo[i] == clave) {
+                indice = i; // Modifica el índice si el elemento se encuentra
+                break;
+            }
+        }
+        return indice; // Retorna el valor de indice ya sea que este o no
     }
 
     /**

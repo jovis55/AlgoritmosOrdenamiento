@@ -32,17 +32,21 @@ public class Main {
 //        probarBitonicSortCon100000();
 //        probarBitonicSortCon1000000();
 
-        probarLinearSearchCon10000();
-        probarLinearSearchCon100000();
-        probarLinearSearchCon1000000();
+//        probarLinearSearchCon10000();
+//        probarLinearSearchCon100000();
+//        probarLinearSearchCon1000000();
 
-        probarBinarySearchCon10000();
-        probarBinarySearchCon100000();
-        probarBinarySearchCon1000000();
+        probarLimitedLinearSearchCon10000();
+        probarLimitedLinearSearchCon100000();
+        probarLimitedLinearSearchCon1000000();
 
-        probarJumpSearchCon10000();
-        probarJumpSearchCon100000();
-        probarJumpSearchCon1000000();
+//        probarBinarySearchCon10000();
+//        probarBinarySearchCon100000();
+//        probarBinarySearchCon1000000();
+//
+//        probarJumpSearchCon10000();
+//        probarJumpSearchCon100000();
+//        probarJumpSearchCon1000000();
     }
 
     static void probarBubbleSortCon10000() {
@@ -316,6 +320,45 @@ public class Main {
 
         long fin = System.currentTimeMillis();      // Registrar el fin
         System.out.println("LinearSearch con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarLimitedLinearSearchCon10000() {
+        long inicio = System.currentTimeMillis();  // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios10000.txt");
+
+        // Ejecutar el método bubbleSort
+        int encontrado = AlgoritmosBusqueda.limitedLinearSearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();  // Registrar el fin
+        System.out.println("Limited Linear Search con 10,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarLimitedLinearSearchCon100000() {
+        long inicio = System.currentTimeMillis();  // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios100000.txt");
+
+        // Ejecutar el método bubbleSort
+        int encontrado = AlgoritmosBusqueda.limitedLinearSearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();  // Registrar el fin
+        System.out.println("Limited Linear Search con 100,000 elementos tomó " + (fin - inicio) + " ms");
+    }
+
+    static void probarLimitedLinearSearchCon1000000() {
+        long inicio = System.currentTimeMillis();  // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios1000000.txt");
+
+        // Ejecutar el método bubbleSort
+        int encontrado = AlgoritmosBusqueda.limitedLinearSearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();  // Registrar el fin
+        System.out.println("Limited Linear Search con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
     }
 
     static void probarBinarySearchCon10000() {
