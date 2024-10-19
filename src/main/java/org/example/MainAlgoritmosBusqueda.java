@@ -62,6 +62,9 @@ public class MainAlgoritmosBusqueda extends ApplicationFrame {
         long tiempoLineal10000 = probarLinealCon10000();
         tiemposEjecucion.put("Lineal con 10,000", tiempoLineal10000);
 
+        long tiempoLinealLimitado10000 = probarLinealLimitadoCon10000();
+        tiemposEjecucion.put("Lineal limitado con 10,000", tiempoLinealLimitado10000);
+
         long tiempoBinario10000 = probarBinarioCon10000();
         tiemposEjecucion.put("Binario con 10,000", tiempoBinario10000);
 
@@ -72,6 +75,9 @@ public class MainAlgoritmosBusqueda extends ApplicationFrame {
         long tiempoLineal100000 = probarLinealCon100000();
         tiemposEjecucion.put("Lineal con 100,000", tiempoLineal100000);
 
+        long tiempoLinealLimitado100000 = probarLinealLimitadoCon100000();
+        tiemposEjecucion.put("Lineal limitado con 100,000", tiempoLinealLimitado100000);
+
         long tiempoBinario100000 = probarBinarioCon100000();
         tiemposEjecucion.put("Binario con 100,000", tiempoBinario100000);
 
@@ -81,6 +87,9 @@ public class MainAlgoritmosBusqueda extends ApplicationFrame {
         // Pruebas con 1,000,000 elementos
         long tiempoLineal1000000 = probarLinealCon1000000();
         tiemposEjecucion.put("Lineal con 1,000,000", tiempoLineal1000000);
+
+        long tiempoLinealLimitado1000000 = probarLinealLimitadoCon1000000();
+        tiemposEjecucion.put("Lineal limitado con 1,000,000", tiempoLinealLimitado1000000);
 
         long tiempoBinario1000000 = probarBinarioCon1000000();
         tiemposEjecucion.put("Binario con 1,000,000", tiempoBinario1000000);
@@ -101,6 +110,22 @@ public class MainAlgoritmosBusqueda extends ApplicationFrame {
         long fin = System.currentTimeMillis();  // Registrar el fin
 
         System.out.println("Lineal con 10,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
+    }
+
+    static long probarLinealLimitadoCon10000() {
+        long inicio = System.currentTimeMillis();  // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios10000.txt");
+
+        // Ejecutar el método lineal
+        int a = AlgoritmosBusqueda.limitedLinearSearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();  // Registrar el fin
+
+        System.out.println("Lineal limitado con 10,000 elementos tomó " + (fin - inicio) + " ms");
 
         return fin - inicio;
     }
@@ -153,6 +178,22 @@ public class MainAlgoritmosBusqueda extends ApplicationFrame {
         return fin - inicio;
     }
 
+    static long probarLinealLimitadoCon100000() {
+        long inicio = System.currentTimeMillis();  // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios100000.txt");
+
+        // Ejecutar el método lineal
+        int a = AlgoritmosBusqueda.limitedLinearSearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();  // Registrar el fin
+
+        System.out.println("Lineal limitado con 100,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
+    }
+
     static long probarBinarioCon100000() {
         long inicio = System.currentTimeMillis();  // Registrar el inicio
 
@@ -197,6 +238,22 @@ public class MainAlgoritmosBusqueda extends ApplicationFrame {
         long fin = System.currentTimeMillis();  // Registrar el fin
 
         System.out.println("Lineal con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
+
+        return fin - inicio;
+    }
+
+    static long probarLinealLimitadoCon1000000() {
+        long inicio = System.currentTimeMillis();  // Registrar el inicio
+
+        // Cargar los valores desde el archivo al arreglo
+        int[] arreglo = ManejoDelTXT.cargarValoresDesdeArchivo("numerosAleatorios1000000.txt");
+
+        // Ejecutar el método lineal
+        int a = AlgoritmosBusqueda.limitedLinearSearch(arreglo, 1);
+
+        long fin = System.currentTimeMillis();  // Registrar el fin
+
+        System.out.println("Lineal limitado con 1,000,000 elementos tomó " + (fin - inicio) + " ms");
 
         return fin - inicio;
     }
