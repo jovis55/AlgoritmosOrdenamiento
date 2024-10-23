@@ -14,18 +14,22 @@ public class MainAlgoritmosBusqueda extends ApplicationFrame {
     private static Map<String, Long> tiemposEjecucion = new HashMap<>();
 
     public MainAlgoritmosBusqueda(String title) {
+
         super(title);
+
         JFreeChart barChart = ChartFactory.createBarChart(
                 "Comparacion de Algoritmos de Busqueda",
                 "Algoritmo",
                 "Tiempo de Ejecucion (ms)",
                 crearDataset(),
                 PlotOrientation.VERTICAL,
-                true, true, false);
+                true, //Incluir convenciones
+                true, //informacion emergente
+                false); //No activa
 
-        ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
-        setContentPane(chartPanel);
+        ChartPanel chartPanel = new ChartPanel(barChart); // Crear el panel del gráfico
+        chartPanel.setPreferredSize(new java.awt.Dimension(800, 600)); // Dimensiones del panel
+        setContentPane(chartPanel); // Establece el panel como contenido principal de la ventana }
     }
 
     public static void main(String[] args) {
@@ -38,7 +42,7 @@ public class MainAlgoritmosBusqueda extends ApplicationFrame {
         probarAlgoritmos();
 
         // Mostrar gráfico en la ventana
-        SwingUtilities.invokeLater(() -> {
+        SwingUtilities.invokeLater(() -> {//Hilo para despacho de eventos
             MainAlgoritmosBusqueda chart = new MainAlgoritmosBusqueda("Comparacion de Algoritmos");
             chart.setSize(800, 600);
             chart.setLocationRelativeTo(null);
@@ -48,7 +52,7 @@ public class MainAlgoritmosBusqueda extends ApplicationFrame {
     }
 
     private static DefaultCategoryDataset crearDataset() {
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();//estructura de datos específica para gráficos categóricos
 
         for (Map.Entry<String, Long> entry : tiemposEjecucion.entrySet()) {
             dataset.addValue(entry.getValue(), entry.getKey(), entry.getKey());
